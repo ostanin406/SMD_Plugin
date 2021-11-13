@@ -50,13 +50,12 @@ int CSmd::Load(const char* file)
 					{
 						if (feof(f)) return 0;
 						if ((tok = ReadLine(line, sizeof(line), f)) == 0) continue;
-						if ((end = strcmp(tok, "end")) == 0) break;
 
 						skeleton.pos.push_back(vec3tok);
 						skeleton.rot.push_back(vec3tok);
 					}
+					data.skeleton.push_back(skeleton);
 				}
-				data.skeleton.push_back(skeleton);
 			}
 			if (end != 0) return 0;
 			continue;
